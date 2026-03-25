@@ -1,5 +1,5 @@
 import { Code2, Server, Cloud, Users } from "lucide-react";
-import { Section, SectionTitle, SectionContent, SkillBadge } from "@/components/ui";
+import { Section, SectionTitle, SectionContent, SkillBadge, Card } from "@/components/ui";
 import { skills } from "@/data";
 import type { SkillCategory } from "@/types";
 
@@ -10,11 +10,11 @@ const iconMap = {
   quality: Users,
 };
 
-const colorMap: Record<SkillCategory["icon"], string> = {
-  backend: "text-blue-400",
-  frontend: "text-cyan-400",
-  devops: "text-emerald-400",
-  quality: "text-purple-400",
+const colorMap: Record<SkillCategory["icon"], { icon: string; bg: string; border: string }> = {
+  backend: { icon: "text-blue-400", bg: "bg-blue-500/10", border: "border-blue-500/20" },
+  frontend: { icon: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+  devops: { icon: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20" },
+  quality: { icon: "text-purple-400", bg: "bg-purple-500/10", border: "border-purple-500/20" },
 };
 
 function Skills() {
@@ -22,21 +22,26 @@ function Skills() {
     <Section id="skills">
       <SectionContent>
         <SectionTitle>Skills & Expertise</SectionTitle>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-5">
           {skills.map((category) => {
             const Icon = iconMap[category.icon];
+            const colors = colorMap[category.icon];
             return (
-              <div key={category.name}>
-                <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                  <Icon size={20} className={colorMap[category.icon]} />
-                  {category.name}
-                </h3>
+              <Card key={category.name} className="p-5">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`p-2 rounded-lg ${colors.bg} border ${colors.border}`}>
+                    <Icon size={20} className={colors.icon} />
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-200">
+                    {category.name}
+                  </h3>
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
                     <SkillBadge key={skill}>{skill}</SkillBadge>
                   ))}
                 </div>
-              </div>
+              </Card>
             );
           })}
         </div>

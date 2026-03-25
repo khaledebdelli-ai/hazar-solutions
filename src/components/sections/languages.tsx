@@ -7,16 +7,12 @@ function Languages() {
     <Section id="languages">
       <SectionContent>
         <SectionTitle>Languages</SectionTitle>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {languages.map((lang, index) => (
-            <Card key={index}>
-              <div className="flex items-center gap-3">
-                <Globe size={20} className="text-blue-400 shrink-0" />
-                <div>
-                  <h3 className="font-semibold">{lang.name}</h3>
-                  <p className="text-slate-400 text-sm">{lang.proficiency}</p>
-                </div>
-              </div>
+            <Card key={index} className="p-4 text-center">
+              <Globe size={24} className="text-blue-400 mx-auto mb-2" />
+              <h3 className="font-semibold text-slate-200">{lang.name}</h3>
+              <p className="text-slate-400 text-sm mt-1">{lang.proficiency}</p>
             </Card>
           ))}
         </div>

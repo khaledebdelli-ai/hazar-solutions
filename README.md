@@ -93,7 +93,18 @@ npm run build
 
 # Start production server
 npm run start
+
+# Clean build artifacts and caches
+npm run clean
 ```
+
+## Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Create production build
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run clean` - Remove build artifacts and caches (.next, cache files)
 
 ## Features
 

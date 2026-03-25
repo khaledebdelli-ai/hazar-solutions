@@ -10,6 +10,11 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+  
+  body {
+    @apply bg-slate-950;
   }
 }
 
