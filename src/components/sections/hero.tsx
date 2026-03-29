@@ -1,13 +1,24 @@
+"use client";
+
 import { Mail, Linkedin, ExternalLink, MapPin, Download } from "lucide-react";
 import { Button } from "@/components/ui";
 import { profile } from "@/data";
 
-function Hero() {
+function Hero () {
   return (
     <header className="relative min-h-screen flex items-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-slate-950 to-slate-950" />
-      <div className="absolute top-20 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-0 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl" />
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-slate-950 to-slate-950"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-20 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-20 left-0 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"
+        aria-hidden="true"
+      />
       
       <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
         <div className="max-w-4xl">
@@ -40,6 +51,12 @@ function Hero() {
                 Contact Me
               </Button>
             </a>
+            <button
+              onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+              className="rounded-lg px-4 py-2 text-sm font-medium bg-blue-500 hover:bg-blue-600 text-white transition-colors"
+            >
+              View Projects
+            </button>
             <a href="/khaled_ebdelli_cv_2026.pdf" download>
               <Button variant="secondary">
                 <Download size={18} />

@@ -28,6 +28,7 @@ function Header() {
 
   return (
     <header
+      role="banner"
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
@@ -35,7 +36,10 @@ function Header() {
           : "bg-transparent"
       )}
     >
-      <nav className="container mx-auto px-6 py-4">
+      <nav
+        aria-label="Main navigation"
+        className="container mx-auto px-6 py-4"
+      >
         <div className="flex items-center justify-between">
           <a
             href="#"
@@ -50,7 +54,7 @@ function Header() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-sm text-slate-400 hover:text-blue-400 transition-colors"
+                  className="text-sm text-slate-400 hover:text-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
                 >
                   {link.label}
                 </a>
@@ -62,19 +66,24 @@ function Header() {
             className="md:hidden p-2 text-slate-400 hover:text-slate-100 transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-slate-800">
+          <div
+            className="md:hidden mt-4 pb-4 border-t border-slate-800"
+            role="dialog"
+            aria-modal="true"
+          >
             <ul className="flex flex-col gap-4 pt-4">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="block text-slate-400 hover:text-blue-400 transition-colors"
+                    className="block text-slate-400 hover:text-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.label}

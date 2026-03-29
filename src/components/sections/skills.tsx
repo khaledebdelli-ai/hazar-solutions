@@ -1,4 +1,4 @@
-import { Code2, Server, Cloud, Users } from "lucide-react";
+import { Code2, Server, Cloud, Users, Heart } from "lucide-react";
 import { Section, SectionTitle, SectionContent, SkillBadge, Card } from "@/components/ui";
 import { skills } from "@/data";
 import type { SkillCategory } from "@/types";
@@ -8,6 +8,7 @@ const iconMap = {
   frontend: Code2,
   devops: Cloud,
   quality: Users,
+  soft: Heart,
 };
 
 const colorMap: Record<SkillCategory["icon"], { icon: string; bg: string; border: string }> = {
@@ -15,6 +16,7 @@ const colorMap: Record<SkillCategory["icon"], { icon: string; bg: string; border
   frontend: { icon: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
   devops: { icon: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20" },
   quality: { icon: "text-purple-400", bg: "bg-purple-500/10", border: "border-purple-500/20" },
+  soft: { icon: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/20" },
 };
 
 function Skills() {

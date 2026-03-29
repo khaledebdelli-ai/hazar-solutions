@@ -2,7 +2,7 @@ import type { SkillCategory } from "@/types";
 
 export const skills: SkillCategory[] = [
   {
-    name: "Back-end",
+    name: "Back-end Development",
     skills: [
       "Node.js",
       "NestJS",
@@ -18,14 +18,16 @@ export const skills: SkillCategory[] = [
     icon: "backend",
   },
   {
-    name: "Front-end",
+    name: "Front-end Development",
     skills: [
       "React.js",
       "Next.js",
       "React Native",
       "TypeScript",
-      "ReactQuery",
+      "React Query",
       "HTML5/CSS3",
+      "Tailwind CSS",
+      "Redux",
     ],
     icon: "frontend",
   },
@@ -52,7 +54,23 @@ export const skills: SkillCategory[] = [
       "Microservices",
       "Design Patterns",
       "Swagger/OpenAPI",
+      "SonarQube",
+      "Cypress",
     ],
     icon: "quality",
+  },
+  {
+    name: "Soft Skills",
+    skills: [
+      "Technical Leadership",
+      "Team Mentoring",
+      "Agile/Scrum",
+      "Problem Solving",
+      "Communication",
+      "Project Management",
+      "Stakeholder Management",
+      "Continuous Learning",
+    ],
+    icon: "soft",
   },
 ];
