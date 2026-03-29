@@ -1,4 +1,4 @@
-import { Mail, Linkedin, ExternalLink, MapPin } from "lucide-react";
+import { Mail, Linkedin, ExternalLink, MapPin, Download } from "lucide-react";
 import { Button } from "@/components/ui";
 import { profile } from "@/data";
 
@@ -40,16 +40,16 @@ function Hero() {
                 Contact Me
               </Button>
             </a>
-            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+            <a href="/khaled_ebdelli_cv_2026.pdf" download>
               <Button variant="secondary">
-                <Linkedin size={18} />
-                LinkedIn
+                <Download size={18} />
+                Download CV
               </Button>
             </a>
-            <a href={profile.website} target="_blank" rel="noopener noreferrer">
-              <Button variant="secondary">
-                <ExternalLink size={18} />
-                Hazar Solutions
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+              <Button variant="ghost">
+                <Linkedin size={18} />
+                LinkedIn
               </Button>
             </a>
           </div>
