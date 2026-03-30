@@ -9,7 +9,7 @@ export interface Project {
 export interface SkillCategory {
   name: string;
   skills: string[];
-  icon: "backend" | "frontend" | "devops" | "quality";
+  icon: "backend" | "frontend" | "devops" | "quality" | "soft";
 }
 
 export interface Experience {

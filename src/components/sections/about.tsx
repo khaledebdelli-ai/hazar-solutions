@@ -1,6 +1,10 @@
-import { Mail, Linkedin, ExternalLink, MapPin, Phone } from "lucide-react";
-import { Section, SectionTitle, SectionContent, Card } from "@/components/ui";
+"use client";
+
+import { motion } from "framer-motion";
+import { Mail, Linkedin, ExternalLink, Phone } from "lucide-react";
+import { Section, SectionTitle, SectionContent, Card, AnimatedSection } from "@/components/ui";
 import { profile } from "@/data";
+import { useI18n } from "@/i18n";
 
 const contactItems = [
   { icon: Mail, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
@@ -10,42 +14,53 @@ const contactItems = [
 ];
 
 function About() {
+  const { t } = useI18n();
+
   return (
     <Section id="about">
       <SectionContent>
-        <SectionTitle>About Me</SectionTitle>
-        <div className="grid md:grid-cols-5 gap-6">
-          <div className="md:col-span-3 space-y-4 text-slate-400">
-            <p className="text-lg leading-relaxed">
-              Across missions in healthcare, finance, banking, and public administration, I
-              have consolidated a Lead Developer role: technical leadership, team mentoring,
-              scalable architecture definition, and code quality assurance.
-            </p>
-            <p className="leading-relaxed">
-              I place performance, security, and delivery at the heart of every project.
-              My focus is on building robust backends, modern frontends, and automated
-              DevOps pipelines.
-            </p>
-          </div>
-          <div className="md:col-span-2">
-            <Card className="p-5">
-              <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Contact</h3>
-              <div className="space-y-3">
-                {contactItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target={item.href.startsWith("http") ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-slate-300 hover:text-blue-400 transition-colors group"
-                  >
-                    <item.icon size={18} className="text-blue-400 shrink-0" />
-                    <span className="text-sm truncate">{item.value}</span>
-                  </a>
-                ))}
-              </div>
-            </Card>
-          </div>
+        <AnimatedSection>
+          <SectionTitle>{t.about.title}</SectionTitle>
+        </AnimatedSection>
+        <div className="grid md:grid-cols-3 gap-6">
+          <AnimatedSection className="md:col-span-2 space-y-4 text-slate-400" delay={0.1}>
+            <p className="text-lg leading-relaxed">{t.about.p1}</p>
+            <p className="leading-relaxed">{t.about.p2}</p>
+          </AnimatedSection>
+          <AnimatedSection delay={0.2}>
+            <motion.div
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <Card className="p-5">
+                <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">{t.about.contact}</h3>
+                <div className="space-y-3">
+                  {contactItems.map((item, i) => (
+                    <motion.a
+                      key={item.label}
+                      href={item.href}
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-slate-300 hover:text-blue-400 transition-colors group"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + i * 0.1 }}
+                      whileHover={{ x: 4 }}
+                    >
+                      <motion.div
+                        whileHover={{ rotate: 10 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        <item.icon size={18} className="text-blue-400 shrink-0" />
+                      </motion.div>
+                      <span className="text-sm truncate">{item.value}</span>
+                    </motion.a>
+                  ))}
+                </div>
+              </Card>
+            </motion.div>
+          </AnimatedSection>
         </div>
       </SectionContent>
     </Section>
